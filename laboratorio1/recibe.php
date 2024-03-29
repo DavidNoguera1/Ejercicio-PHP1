@@ -67,7 +67,8 @@ if (isset($_POST['editar'])) {
 <div class="container-fluid"> <!-- Aumento del ancho del contenedor -->
     <div class="row justify-content-center">
         <div class="col-md-12"> <!-- Aumento del ancho -->
-            <table class="table table-bordered table-dark">
+        <button type="button" class="btn btn-primary mb-3" id="btnVerMasRecientes">Ver más recientes</button>
+            <table class="table table-bordered table-dark" id="tablaNoticias">
                 <thead>
                     <tr>
                         <th>Título</th>
@@ -116,6 +117,26 @@ if (isset($_POST['editar'])) {
 //Incluir la pagina footer
 include "lib/footer.php";
 ?>
+
+<!-- Script para ordenar noticias -->
+<script>
+    $(document).ready(function() {
+        // Función para ordenar las filas por fecha de manera descendente
+        function ordenarPorFechaDescendente() {
+            var tbody = $('#tablaNoticias tbody');
+            tbody.find('tr').sort(function(a, b) {
+                return new Date($(b).find('td:eq(1)').text()) - new Date($(a).find('td:eq(1)').text());
+            }).appendTo(tbody);
+        }
+
+        // Manejar el clic en el botón "Ver más recientes"
+        $('#btnVerMasRecientes').click(function() {
+            // Llamar a la función para ordenar las filas
+            ordenarPorFechaDescendente();
+        });
+    });
+</script>
+
 
 <!--- SCRIPT PARA CONFIRMAR ELIMINAR --->
 <script>

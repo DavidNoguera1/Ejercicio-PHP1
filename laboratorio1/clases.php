@@ -43,6 +43,30 @@ class Noticia
     {
         return $this->noticia;
     }
+
+    /*
+        Agregamos los setter
+    */
+
+    public function setTitulo($titulo)
+    {
+        $this->titulo=$titulo;
+    }
+
+    public function setFecha($fecha)
+    {
+        $this->fecha=$fecha;
+    }
+
+    public function setAutor($autor)
+    {
+        $this->autor=$autor;
+    }
+
+    public function setNoticia($noticia)
+    {
+        $this->noticia=$noticia;
+    }
 }
 
 class gestorNoticia
@@ -147,10 +171,10 @@ class gestorNoticia
         foreach ($this->noticias as $noticia) {
             if ($noticia->getId() == $id) {
                 // Actualizar los datos de la noticia
-                $noticia->titulo = $nuevoTitulo;
-                $noticia->fecha = $nuevaFecha;
-                $noticia->autor = $nuevoAutor;
-                $noticia->noticia = $nuevaNoticia;
+                $noticia->setTitulo($nuevoTitulo);
+                $noticia->setFecha($nuevaFecha);
+                $noticia->setAutor($nuevoAutor);
+                $noticia->setNoticia($nuevaNoticia);
 
                 // Sobrescribir el archivo con las noticias actualizadas
                 $archivo = "data.txt";
